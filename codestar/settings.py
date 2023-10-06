@@ -32,10 +32,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 development = os.environ.get('DEVELOPMENT', 'False')
 DEBUG =  development == 'True'
 
-ALLOWED_HOSTS = [
-    'think-before-you-blog.herokuapp.com',
-    '8000-shanebyrne0963-i-think-b-snb71d4ws0.us2.codeanyapp.com'
-]
+ALLOWED_HOSTS = [os.environ.get('HOST_URL')]
 
 
 # Application definition
