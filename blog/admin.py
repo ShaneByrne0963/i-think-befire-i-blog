@@ -1,3 +1,16 @@
 from django.contrib import admin
+from .models import Post
+from django_summernote.admin import SummernoteModelAdmin
 
-# Register your models here.
+
+@admin.register(Post)
+class PostAdmin(SummernoteModelAdmin):
+
+    prepopulated_fields = {'slug': ('title',)}
+    # Allows the admin to filter the database items by these keys
+    list_filter = ('status', 'created_on')
+    # Displays the following keys on the admin database list
+    list_display = ('title', 'slug', 'status', 'created_on')
+    # Allows the admin to search by title or content
+    search_fields = ['title', 'content']
+    summernote_fields = ('content')
